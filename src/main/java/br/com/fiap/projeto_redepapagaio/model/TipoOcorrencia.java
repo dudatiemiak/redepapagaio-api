@@ -20,5 +20,5 @@ public class TipoOcorrencia {
 	@NotEmpty(message = "O tipo da ocorrência deve ser informado!")
     @Size(max = 50, message = "O tipo da ocorrência deve ter no máximo 50 caracteres")
 	@Column(name = "nm_tipo_ocorrencia")
-	private String nmTipoOcorrencia;
+	private TipoOcorrenciaEnum nmTipoOcorrencia;
 }
