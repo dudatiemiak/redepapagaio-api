@@ -10,7 +10,7 @@ public class AjudaRealizadaMapper {
     public AjudaRealizadaDTO toDTO(AjudaRealizada ajudaRealizada) {
 
         AjudaRealizadaDTO dto = new AjudaRealizadaDTO();
-        dto.setIdAjudaRealizada(ajudaRealizada.getIdAjuda());
+        dto.setIdAjudaRealizada(ajudaRealizada.getI);
         dto.setOcorrencia(ajudaRealizada.getOcorrencia());
         dto.setTipoAjuda(ajudaRealizada.getTipoAjuda());
         dto.setUsuario(ajudaRealizada.getUsuario());

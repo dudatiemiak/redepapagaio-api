@@ -19,6 +19,7 @@ import lombok.Data;
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_usuario")
 	private Long idUsuario;
 	@NotEmpty(message = "O nome do usuário deve ser informado!")
     @Size(max = 100, message = "O nome do usuário deve ter no máximo 100 caracteres")

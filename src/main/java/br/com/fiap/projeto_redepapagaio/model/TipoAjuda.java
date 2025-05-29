@@ -16,6 +16,7 @@ import lombok.Data;
 public class TipoAjuda {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_tipo_ajuda")
 	private Long idTipoAjuda;
 	@NotEmpty(message = "O tipo de ajuda deve ser informado!")
     @Size(max = 50, message = "O tipo de ajuda deve ter no máximo 50 caracteres")

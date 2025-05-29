@@ -16,6 +16,7 @@ import lombok.Data;
 public class StatusOcorrencia {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_status_ocorrencia")
 	private Long idStatusOcorrencia;
 	@NotEmpty(message = "O status da ocorrência deve ser informado!")
     @Size(max = 20, message = "O status da ocorrência deve ter no máximo 20 caracteres")

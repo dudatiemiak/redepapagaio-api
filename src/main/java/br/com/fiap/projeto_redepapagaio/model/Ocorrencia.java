@@ -19,6 +19,7 @@ import lombok.Data;
 public class Ocorrencia {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_ocorrencia")
 	private Long idOcorrencia;
 	@OneToOne
     @JoinColumn(name = "id_status_ocorrencia", nullable = false)

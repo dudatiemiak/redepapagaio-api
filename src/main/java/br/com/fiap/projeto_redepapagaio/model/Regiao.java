@@ -16,6 +16,7 @@ import lombok.Data;
 public class Regiao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_regiao")
 	private Long idRegiao;
 	@NotEmpty(message = "O nome da região da ocorrência deve ser informado!")
     @Size(max = 100, message = "O nome da região da ocorrência deve ter no máximo 100 caracteres")

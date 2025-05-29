@@ -16,6 +16,7 @@ import lombok.Data;
 public class NivelUrgencia {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_nivel_urgencia")
 	private Long idNivelUrgencia;
 	@NotEmpty(message = "O nível de urgência da ocorrência deve ser informado!")
     @Size(max = 20, message = "O nível de urgência da ocorrência deve ter no máximo 20 caracteres")

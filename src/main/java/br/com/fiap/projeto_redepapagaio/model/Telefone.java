@@ -19,6 +19,7 @@ import lombok.Data;
 public class Telefone {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_telefone")
 	private Long idTelefone;
 	@ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)

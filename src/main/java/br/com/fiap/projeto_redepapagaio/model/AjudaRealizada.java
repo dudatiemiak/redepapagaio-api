@@ -23,6 +23,7 @@ import lombok.Data;
 public class AjudaRealizada {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_ajuda")
 	private Long idAjuda;
 	@ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
