@@ -22,21 +22,21 @@ public class Ocorrencia {
 	private Long idOcorrencia;
 	@OneToOne
     @JoinColumn(name = "id_status_ocorrencia", nullable = false)
-    @NotNull(message = "A ocorrência deve estar relacionado a um status")
+    @NotNull(message = "A ocorrência deve estar relacionada a um status")
 	private StatusOcorrencia statusOcorrencia;
 	@OneToOne
     @JoinColumn(name = "id_nivel_urgencia", nullable = false)
-    @NotNull(message = "A ocorrência deve estar relacionado a um nível de urgência")
+    @NotNull(message = "A ocorrência deve estar relacionada a um nível de urgência")
 	private NivelUrgencia nivelUrgencia;
 	@OneToOne
     @JoinColumn(name = "id_regiao", nullable = false)
-    @NotNull(message = "A ocorrência deve estar relacionado a uma região")
+    @NotNull(message = "A ocorrência deve estar relacionada a uma região")
 	private Regiao regiao;
 	@OneToOne
     @JoinColumn(name = "id_tipo_ocorrencia", nullable = false)
-    @NotNull(message = "A ocorrência deve estar relacionado a um tipo")
+    @NotNull(message = "A ocorrência deve estar relacionada a um tipo")
 	private TipoOcorrencia tipoOcorrencia;
-	@NotEmpty(message = "A descrição da ocorrência deve ser informado!")
+	@NotEmpty(message = "A descrição da ocorrência deve ser informada!")
     @Size(max = 100, message = "A descrição da ocorrência deve ter no máximo 100 caracteres")
 	@Column(name = "ds_ocorrencia")
 	private String dsOcorrencia;
