@@ -1,5 +1,53 @@
 package br.com.fiap.projeto_redepapagaio.dto;
 
 public class RegiaoDTO {
+	private Long idRegiao;
+	private String nmRegiao;
+	private String nmCidade;
+	private String nmEstado;
+	private String nmPais;
+	public RegiaoDTO() {
+	}
+	public RegiaoDTO(Long idRegiao, String nmRegiao, String nmCidade, String nmEstado, String nmPais) {
+		super();
+		this.idRegiao = idRegiao;
+		this.nmRegiao = nmRegiao;
+		this.nmCidade = nmCidade;
+		this.nmEstado = nmEstado;
+		this.nmPais = nmPais;
+	}
+	public Long getIdRegiao() {
+		return idRegiao;
+	}
+	public void setIdRegiao(Long idRegiao) {
+		this.idRegiao = idRegiao;
+	}
+	public String getNmRegiao() {
+		return nmRegiao;
+	}
+	public void setNmRegiao(String nmRegiao) {
+		this.nmRegiao = nmRegiao;
+	}
+	public String getNmCidade() {
+		return nmCidade;
+	}
+	public void setNmCidade(String nmCidade) {
+		this.nmCidade = nmCidade;
+	}
+	public String getNmEstado() {
+		return nmEstado;
+	}
+	public void setNmEstado(String nmEstado) {
+		this.nmEstado = nmEstado;
+	}
+	public String getNmPais() {
+		return nmPais;
+	}
+	public void setNmPais(String nmPais) {
+		this.nmPais = nmPais;
+	}
+	
+	
 
+	
 }
