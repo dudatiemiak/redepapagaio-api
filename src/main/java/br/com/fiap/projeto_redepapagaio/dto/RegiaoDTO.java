@@ -1,6 +1,8 @@
 package br.com.fiap.projeto_redepapagaio.dto;
 
-public class RegiaoDTO {
+import org.springframework.hateoas.RepresentationModel;
+
+public class RegiaoDTO extends RepresentationModel<RegiaoDTO>{
 	private Long idRegiao;
 	private String nmRegiao;
 	private String nmCidade;
