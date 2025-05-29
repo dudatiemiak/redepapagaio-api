@@ -20,5 +20,5 @@ public class NivelUrgencia {
 	@NotEmpty(message = "O nível de urgência da ocorrência deve ser informado!")
     @Size(max = 20, message = "O nível de urgência da ocorrência deve ter no máximo 20 caracteres")
 	@Column(name = "nm_nivel")
-	private String nmNivel;
+	private NivelUrgenciaEnum nmNivel;
 }
