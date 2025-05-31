@@ -24,9 +24,9 @@ public class AjudaRealizadaCachingService {
 		return repC.findAll();
 	}
 	
-	@Cacheable(value = "buscarPorID", key = "#id_ajuda")
-	public Optional<AjudaRealizada> findById(Long id_ajuda){
-		return repC.findById(id_ajuda);
+	@Cacheable(value = "buscarPorID", key = "#idAjuda")
+	public Optional<AjudaRealizada> findById(Long idAjuda){
+		return repC.findById(idAjuda);
 	}
 	
 	@Cacheable(value = "buscarPaginasAjudas", key = "#req")
