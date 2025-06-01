@@ -38,18 +38,18 @@ public class AjudaRealizadaController {
     @Autowired
     private AjudaRealizadaService servA;
 
-    @GetMapping("/todos")
-    public List<AjudaRealizada> listarTodos() {
+    @GetMapping("/todas")
+    public List<AjudaRealizada> listarTodasAjudasRealizadas() {
         return repA.findAll();
     }
 
-    @GetMapping("/todos_cacheable")
-    public List<AjudaRealizada> listarTodosComCache() {
+    @GetMapping("/todas_cacheable")
+    public List<AjudaRealizada> listarTodasAjudasRealizadasComCache() {
         return cacheA.findAll();
     }
 
     @GetMapping("/ordenadas_por_data")
-    public List<AjudaRealizada> listarOrdenadasPorData() {
+    public List<AjudaRealizada> listarAjudasRealizadasOrdenadasPorData() {
         return repA.buscarAjudasOrdenadasPorData();
     }
 
@@ -75,14 +75,14 @@ public class AjudaRealizadaController {
     }
 
     @PostMapping("/inserir")
-    public AjudaRealizada inserir(@RequestBody AjudaRealizada ajuda) {
+    public AjudaRealizada inserirAjudaRealizada(@RequestBody AjudaRealizada ajuda) {
         repA.save(ajuda);
         cacheA.limparCache();
         return ajuda;
     }
 
     @PutMapping("/atualizar/{id_ajuda}")
-    public AjudaRealizada atualizar(@RequestBody AjudaRealizada ajuda, @PathVariable Long id_ajuda) {
+    public AjudaRealizada atualizarAjudaRealizada(@RequestBody AjudaRealizada ajuda, @PathVariable Long id_ajuda) {
         Optional<AjudaRealizada> op = cacheA.findById(id_ajuda);
 
         if (op.isPresent()) {
@@ -105,7 +105,7 @@ public class AjudaRealizadaController {
     }
 
     @DeleteMapping("/remover/{id_ajuda}")
-    public AjudaRealizada remover(@PathVariable Long id_ajuda) {
+    public AjudaRealizada removerAjudaRealizada(@PathVariable Long id_ajuda) {
         Optional<AjudaRealizada> op = cacheA.findById(id_ajuda);
 
         if (op.isPresent()) {
