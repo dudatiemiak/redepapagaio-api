@@ -12,7 +12,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "t_ppg_ocorrencia")
+@Table(name = "t_ppg_regiao")
 public class Regiao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
