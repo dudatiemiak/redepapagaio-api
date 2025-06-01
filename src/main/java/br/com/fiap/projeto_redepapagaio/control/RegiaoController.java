@@ -77,14 +77,14 @@ public class RegiaoController {
         Optional<Regiao> op = cacheR.findById(id_regiao);
 
         if (op.isPresent()) {
-            Regiao regiao_atual = op.get();
-            regiao_atual.setNmRegiao(regiao.getNmRegiao());
-            regiao_atual.setNmCidade(regiao.getNmCidade());
-            regiao_atual.setNmEstado(regiao.getNmEstado());
-            regiao_atual.setNmPais(regiao.getNmPais());
-            repR.save(regiao_atual);
+            Regiao regiaoAtual = op.get();
+            regiaoAtual.setNmRegiao(regiao.getNmRegiao());
+            regiaoAtual.setNmCidade(regiao.getNmCidade());
+            regiaoAtual.setNmEstado(regiao.getNmEstado());
+            regiaoAtual.setNmPais(regiao.getNmPais());
+            repR.save(regiaoAtual);
             cacheR.limparCache();
-            return regiao_atual;
+            return regiaoAtual;
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
