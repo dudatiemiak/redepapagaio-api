@@ -77,11 +77,11 @@ public class NivelUrgenciaController {
         Optional<NivelUrgencia> op = cacheN.findById(id_nivel);
 
         if (op.isPresent()) {
-            NivelUrgencia atual = op.get();
-            atual.setNmNivel(nivelUrgencia.getNmNivel());
-            repN.save(atual);
+            NivelUrgencia nivelAtual = op.get();
+            nivelAtual.setNmNivel(nivelUrgencia.getNmNivel());
+            repN.save(nivelAtual);
             cacheN.limparCache();
-            return atual;
+            return nivelAtual;
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
