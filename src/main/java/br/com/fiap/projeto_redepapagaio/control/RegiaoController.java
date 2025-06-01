@@ -34,13 +34,13 @@ public class RegiaoController {
     @Autowired
     private RegiaoService servR;
 
-    @GetMapping("/todos")
-    public List<Regiao> listarTodos() {
+    @GetMapping("/todas")
+    public List<Regiao> listarTodasRegioes() {
         return repR.findAll();
     }
 
-    @GetMapping("/todos_cacheable")
-    public List<Regiao> listarTodosComCache() {
+    @GetMapping("/todas_cacheable")
+    public List<Regiao> listarTodasRegioesComCache() {
         return cacheR.findAll();
     }
 
