@@ -35,12 +35,12 @@ public class NivelUrgenciaController {
     private NivelUrgenciaService servN;
 
     @GetMapping("/todos")
-    public List<NivelUrgencia> listarTodos() {
+    public List<NivelUrgencia> listarTodosNiveisUrgencias() {
         return repN.findAll();
     }
 
     @GetMapping("/todos_cacheable")
-    public List<NivelUrgencia> listarTodosComCache() {
+    public List<NivelUrgencia> listarTodosNiveisUrgenciasComCache() {
         return cacheN.findAll();
     }
 
@@ -66,14 +66,14 @@ public class NivelUrgenciaController {
     }
 
     @PostMapping("/inserir")
-    public NivelUrgencia inserir(@RequestBody NivelUrgencia nivelUrgencia) {
+    public NivelUrgencia inserirNivelUrgencia(@RequestBody NivelUrgencia nivelUrgencia) {
         repN.save(nivelUrgencia);
         cacheN.limparCache();
         return nivelUrgencia;
     }
 
     @PutMapping("/atualizar/{id_nivel}")
-    public NivelUrgencia atualizar(@RequestBody NivelUrgencia nivelUrgencia, @PathVariable Long id_nivel) {
+    public NivelUrgencia atualizarNivelUrgencia(@RequestBody NivelUrgencia nivelUrgencia, @PathVariable Long id_nivel) {
         Optional<NivelUrgencia> op = cacheN.findById(id_nivel);
 
         if (op.isPresent()) {
@@ -88,7 +88,7 @@ public class NivelUrgenciaController {
     }
 
     @DeleteMapping("/remover/{id_nivel}")
-    public NivelUrgencia remover(@PathVariable Long id_nivel) {
+    public NivelUrgencia removerNivelUrgencia(@PathVariable Long id_nivel) {
     	
         Optional<NivelUrgencia> op = cacheN.findById(id_nivel);
 
