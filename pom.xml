@@ -77,7 +77,7 @@
 		<dependency>
 		    <groupId>com.mysql</groupId>
 		    <artifactId>mysql-connector-j</artifactId>
-		    <version>8.3.0</version>
+		    <version>8.0.33</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -128,6 +128,13 @@
 				<configuration>
 					<mainClass>br.com.fiap.projeto_redepapagaio.ProjetoRedepapagaioApplication</mainClass>
 				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
