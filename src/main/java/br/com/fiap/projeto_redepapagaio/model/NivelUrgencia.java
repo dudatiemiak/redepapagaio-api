@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -18,8 +19,7 @@ public class NivelUrgencia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_nivel_urgencia")
 	private Long idNivelUrgencia;
-	@NotEmpty(message = "O nível de urgência da ocorrência deve ser informado!")
-    @Size(max = 20, message = "O nível de urgência da ocorrência deve ter no máximo 20 caracteres")
+	@NotNull(message = "O nível de urgência da ocorrência deve ser informado!")
 	@Column(name = "nm_nivel")
 	private NivelUrgenciaEnum nmNivel;
 }

@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -18,8 +19,7 @@ public class TipoOcorrencia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_tipo_ocorrencia")
 	private Long idTipoOcorrencia;
-	@NotEmpty(message = "O tipo da ocorrência deve ser informado!")
-    @Size(max = 50, message = "O tipo da ocorrência deve ter no máximo 50 caracteres")
+	@NotNull(message = "O tipo da ocorrência deve ser informado!")
 	@Column(name = "nm_tipo_ocorrencia")
 	private TipoOcorrenciaEnum nmTipoOcorrencia;
 }
