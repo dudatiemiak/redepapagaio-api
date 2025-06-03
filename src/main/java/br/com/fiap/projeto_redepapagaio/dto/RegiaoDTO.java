@@ -11,7 +11,7 @@ public class RegiaoDTO extends RepresentationModel<RegiaoDTO>{
 	public RegiaoDTO() {
 	}
 	
-	public RegiaoDTO(Long idRegiao, String nmRegiao, String nmCidade, String nmEstado, String nmPais) {
+	public RegiaoDTO(Long idRegiao, String nmRegiao, String nmCidade, String nmEstado) {
 		super();
 		this.idRegiao = idRegiao;
 		this.nmRegiao = nmRegiao;
