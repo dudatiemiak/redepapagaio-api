@@ -1,6 +1,7 @@
 package br.com.fiap.projeto_redepapagaio.control;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.fiap.projeto_redepapagaio.dto.NivelUrgenciaDTO;
@@ -23,6 +26,8 @@ import br.com.fiap.projeto_redepapagaio.repository.NivelUrgenciaRepository;
 import br.com.fiap.projeto_redepapagaio.service.NivelUrgenciaCachingService;
 import br.com.fiap.projeto_redepapagaio.service.NivelUrgenciaService;
 
+@RestController
+@RequestMapping("/niveis_urgencias")
 public class NivelUrgenciaController {
 
 	@Autowired

@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.fiap.projeto_redepapagaio.dto.RegiaoDTO;
@@ -23,6 +25,8 @@ import br.com.fiap.projeto_redepapagaio.repository.RegiaoRepository;
 import br.com.fiap.projeto_redepapagaio.service.RegiaoCachingService;
 import br.com.fiap.projeto_redepapagaio.service.RegiaoService;
 
+@RestController
+@RequestMapping("/regioes")
 public class RegiaoController {
 
 	@Autowired

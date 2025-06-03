@@ -23,19 +23,22 @@ public class SegurancaConfig {
 	}
 	
 	@Bean
-	SecurityFilterChain filtrarRota(HttpSecurity http) throws Exception {
-		
-		http.csrf(csrf -> csrf.disable())
-							  .headers(banco -> banco.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
-							  .authorizeHttpRequests(request -> 
-							  request.requestMatchers("/**")
-							  .permitAll().anyRequest().authenticated())
-							  //.httpBasic(Customizer.withDefaults());
-							  .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-							  .sessionManagement(servidor -> 
-							  servidor.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-		
-		return http.build();
-		
-	}
+    SecurityFilterChain filtrarRota(HttpSecurity http) throws Exception {
+
+        http.csrf(csrf -> csrf.disable())
+            .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                    "/autenticacao/**",       
+                    "/v3/api-docs/**",        
+                    "/swagger-ui/**",
+                    "/swagger-ui.html"
+                ).permitAll()
+                .anyRequest().authenticated()
+            )
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }
 }

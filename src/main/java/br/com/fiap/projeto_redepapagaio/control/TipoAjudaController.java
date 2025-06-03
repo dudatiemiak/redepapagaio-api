@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.fiap.projeto_redepapagaio.dto.TipoAjudaDTO;
@@ -23,6 +25,8 @@ import br.com.fiap.projeto_redepapagaio.repository.TipoAjudaRepository;
 import br.com.fiap.projeto_redepapagaio.service.TipoAjudaCachingService;
 import br.com.fiap.projeto_redepapagaio.service.TipoAjudaService;
 
+@RestController
+@RequestMapping("/tipos_ajudas")
 public class TipoAjudaController {
 
 	@Autowired
