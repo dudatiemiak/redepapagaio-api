@@ -17,6 +17,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
            OR u.nm_senha LIKE CONCAT('%', :sub, '%')
         ORDER BY u.nm_usuario ASC
     """)
-    List<Usuario> buscarUsuarioPorSubstringOrdenadoPorNome(String sub_usuario);
+    List<Usuario> buscarUsuarioPorSubstringOrdenadoPorNome(String sub);
 	
 }
