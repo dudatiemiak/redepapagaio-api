@@ -28,7 +28,5 @@ public class Regiao {
 	@Size(max = 100, message = "O nome do estado da ocorrência deve ter no máximo 100 caracteres")
 	@Column(name = "nm_estado")
 	private String nmEstado;
-	@Size(max = 100, message = "O nome do país da ocorrência deve ter no máximo 100 caracteres")
-	@Column(name = "nm_pais")
-	private String nmPais;
+	
 }

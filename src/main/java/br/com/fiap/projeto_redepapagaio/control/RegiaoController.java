@@ -85,7 +85,6 @@ public class RegiaoController {
             regiaoAtual.setNmRegiao(regiao.getNmRegiao());
             regiaoAtual.setNmCidade(regiao.getNmCidade());
             regiaoAtual.setNmEstado(regiao.getNmEstado());
-            regiaoAtual.setNmPais(regiao.getNmPais());
             repR.save(regiaoAtual);
             cacheR.limparCache();
             return regiaoAtual;

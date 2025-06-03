@@ -7,16 +7,16 @@ public class RegiaoDTO extends RepresentationModel<RegiaoDTO>{
 	private String nmRegiao;
 	private String nmCidade;
 	private String nmEstado;
-	private String nmPais;
+	
 	public RegiaoDTO() {
 	}
+	
 	public RegiaoDTO(Long idRegiao, String nmRegiao, String nmCidade, String nmEstado, String nmPais) {
 		super();
 		this.idRegiao = idRegiao;
 		this.nmRegiao = nmRegiao;
 		this.nmCidade = nmCidade;
 		this.nmEstado = nmEstado;
-		this.nmPais = nmPais;
 	}
 	public Long getIdRegiao() {
 		return idRegiao;
@@ -41,12 +41,6 @@ public class RegiaoDTO extends RepresentationModel<RegiaoDTO>{
 	}
 	public void setNmEstado(String nmEstado) {
 		this.nmEstado = nmEstado;
-	}
-	public String getNmPais() {
-		return nmPais;
-	}
-	public void setNmPais(String nmPais) {
-		this.nmPais = nmPais;
 	}
 	
 	

@@ -14,7 +14,6 @@ public class RegiaoMapper {
         dto.setNmRegiao(regiao.getNmRegiao());
         dto.setNmCidade(regiao.getNmCidade());
         dto.setNmEstado(regiao.getNmEstado());
-        dto.setNmPais(regiao.getNmPais());
         return dto;
         
     }
