@@ -16,29 +16,30 @@ public class SegurancaConfig {
 
 	@Autowired
 	private JWTAuthFilter jwtAuthFilter;
-	
+
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
 		return config.getAuthenticationManager();
 	}
-	
+
 	@Bean
-    SecurityFilterChain filtrarRota(HttpSecurity http) throws Exception {
+	public SecurityFilterChain filtrarRota(HttpSecurity http) throws Exception {
+		http.csrf(csrf -> csrf.disable())
+				.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
+				.authorizeHttpRequests(auth -> auth
+						.requestMatchers(
+								"/autenticacao/**",       // libera endpoints de login/autenticação
+								"/swagger-ui/**",         // libera Swagger UI
+								"/v3/api-docs/**",        // libera documentação da API
+								"/swagger-ui.html",       // rota raiz da UI
+								"/usuarios/**"          // (opcional) para liberar usuários durante testes
+						).permitAll()
+						.requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
+						.anyRequest().authenticated()
+				)
+				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
-        http.csrf(csrf -> csrf.disable())
-            .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(
-                    "/autenticacao/**",       
-                    "/v3/api-docs/**",        
-                    "/swagger-ui/**",
-                    "/swagger-ui.html"
-                ).permitAll()
-                .anyRequest().authenticated()
-            )
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-
-        return http.build();
-    }
+		return http.build();
+	}
 }
