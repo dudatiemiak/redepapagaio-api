@@ -9,24 +9,24 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import br.com.fiap.projeto_redepapagaio.model.UsuarioSistema;
-import br.com.fiap.projeto_redepapagaio.repository.UsuarioSistemaRepository;
+import br.com.fiap.projeto_redepapagaio.model.Usuario;
+import br.com.fiap.projeto_redepapagaio.repository.UsuarioRepository;
 
 @Configuration
 public class UsuarioConfig {
 
 	@Autowired
-	private UsuarioSistemaRepository userRepository;
+	private UsuarioRepository repU;
 
 	@Bean
 	UserDetailsService gerarUsuario() {
 
 		return username -> {
-			UsuarioSistema usuarioSistema = userRepository.findByUsername(username)
+			Usuario usuario = repU.findByUsername(username)
 					.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado na base dados"));
 
-			return User.builder().username(usuarioSistema.getUsername())
-								 .password(usuarioSistema.getPassword())
+			return User.builder().username(usuario.getNmEmail())
+								 .password(usuario.getNmSenha())
 								 .roles("USER")
 								 .build();
 		};
