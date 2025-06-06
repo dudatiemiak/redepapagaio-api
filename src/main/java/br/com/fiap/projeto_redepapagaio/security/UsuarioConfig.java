@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import br.com.fiap.projeto_redepapagaio.model.Usuario;
@@ -19,28 +19,24 @@ public class UsuarioConfig {
 	private UsuarioRepository repU;
 
 	@Bean
-	UserDetailsService gerarUsuario() {
+	public UserDetailsService gerarUsuario() {
 
 		return nmEmail -> {
 			Usuario usuario = repU.findByNmEmail(nmEmail)
-					.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado na base dados"));
+					.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado na base de dados"));
 
-<<<<<<< HEAD
-			return User.builder().username(usuario.getNmEmail())
-								 .password(usuario.getNmSenha())
-								 .roles("USER")
-								 .build();
-=======
-			return User.builder().username(usuarioSistema.getUsername())
-					.password(usuarioSistema.getPassword())
+			// Corrigido para usar 'usuario' em vez de 'usuarioSistema'
+			return User.builder()
+					.username(usuario.getNmEmail())
+					.password(usuario.getNmSenha())
 					.roles("USER")
 					.build();
->>>>>>> 9046d5b963791cb189a29d11189e75ffe910535e
 		};
 	}
 
 	@Bean
-	PasswordEncoder passwordEncoder() {
-		return NoOpPasswordEncoder.getInstance();
+	public PasswordEncoder passwordEncoder() {
+		// Substituído NoOpPasswordEncoder por BCryptPasswordEncoder
+		return new BCryptPasswordEncoder();
 	}
 }

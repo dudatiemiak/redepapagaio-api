@@ -23,38 +23,24 @@ public class SegurancaConfig {
 	}
 
 	@Bean
-	SecurityFilterChain filtrarRota(HttpSecurity http) throws Exception {
-
-<<<<<<< HEAD
-        http.csrf(csrf -> csrf.disable())
-            .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(
-                    "/autenticacao/**",       
-                    "/v3/api-docs/**",        
-                    "/swagger-ui/**",
-                    "/swagger-ui.html",
-                    "/usuarios/**"
-                ).permitAll()
-                .anyRequest().authenticated()
-            )
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-=======
+	public SecurityFilterChain filtrarRota(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable())
 				.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
 				.authorizeHttpRequests(auth -> auth
+						// Permitir acesso sem autenticação para algumas rotas
 						.requestMatchers(
-								"/autenticacao/**",
-								"/v3/api-docs/**",
+								"/autenticacao/**",       // Permite o acesso a autenticação
+								"/v3/api-docs/**",        // Permite acesso ao Swagger
 								"/swagger-ui/**",
-								"/swagger-ui.html"
+								"/swagger-ui.html",
+								"/usuarios/**"           // Permite acesso aos usuários sem autenticação
 						).permitAll()
-						.anyRequest().permitAll()
+						// Exigir autenticação para todas as outras rotas
+						.anyRequest().authenticated()
 				)
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				// Adiciona o filtro JWT para as requisições
 				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
->>>>>>> 9046d5b963791cb189a29d11189e75ffe910535e
 
 		return http.build();
 	}
