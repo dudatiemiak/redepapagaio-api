@@ -36,7 +36,7 @@ public class SegurancaConfig {
 								"/usuarios/**"           // Permite acesso aos usuários sem autenticação
 						).permitAll()
 						// Exigir autenticação para todas as outras rotas
-						.anyRequest().authenticated()
+						.anyRequest().permitAll()
 				)
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				// Adiciona o filtro JWT para as requisições
