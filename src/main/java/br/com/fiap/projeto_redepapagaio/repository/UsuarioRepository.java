@@ -1,6 +1,7 @@
 package br.com.fiap.projeto_redepapagaio.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,4 +20,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
     """)
     List<Usuario> buscarUsuarioPorSubstringOrdenadoPorNome(String sub);
 	
+    Optional<Usuario> findByUsername(String nmEmail);
 }
