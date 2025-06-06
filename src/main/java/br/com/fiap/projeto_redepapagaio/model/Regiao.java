@@ -22,9 +22,11 @@ public class Regiao {
     @Size(max = 100, message = "O nome da região da ocorrência deve ter no máximo 100 caracteres")
 	@Column(name = "nm_regiao")
 	private String nmRegiao;
+	@NotEmpty(message = "O nome da cidade da ocorrência deve ser informado!")
 	@Size(max = 100, message = "O nome da cidade da ocorrência deve ter no máximo 100 caracteres")
 	@Column(name = "nm_cidade")
 	private String nmCidade;
+	@NotEmpty(message = "O nome do estado da ocorrência deve ser informado!")
 	@Size(max = 100, message = "O nome do estado da ocorrência deve ter no máximo 100 caracteres")
 	@Column(name = "nm_estado")
 	private String nmEstado;

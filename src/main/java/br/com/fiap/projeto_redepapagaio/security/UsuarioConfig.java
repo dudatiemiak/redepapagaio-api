@@ -21,8 +21,8 @@ public class UsuarioConfig {
 	@Bean
 	UserDetailsService gerarUsuario() {
 
-		return username -> {
-			Usuario usuario = repU.findByUsername(username)
+		return nmEmail -> {
+			Usuario usuario = repU.findByNmEmail(nmEmail)
 					.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado na base dados"));
 
 			return User.builder().username(usuario.getNmEmail())

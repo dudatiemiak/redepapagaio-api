@@ -20,5 +20,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
     """)
     List<Usuario> buscarUsuarioPorSubstringOrdenadoPorNome(String sub);
 	
-    Optional<Usuario> findByUsername(String nmEmail);
+    Optional<Usuario> findByNmEmail(String nmEmail);
 }
