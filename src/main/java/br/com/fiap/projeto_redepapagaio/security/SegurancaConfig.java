@@ -23,19 +23,18 @@ public class SegurancaConfig {
 	}
 
 	@Bean
-	public SecurityFilterChain filtrarRota(HttpSecurity http) throws Exception {
+	SecurityFilterChain filtrarRota(HttpSecurity http) throws Exception {
+
 		http.csrf(csrf -> csrf.disable())
 				.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers(
-								"/autenticacao/**",       // libera endpoints de login/autenticação
-								"/swagger-ui/**",         // libera Swagger UI
-								"/v3/api-docs/**",        // libera documentação da API
-								"/swagger-ui.html",       // rota raiz da UI
-								"/usuarios/**"          // (opcional) para liberar usuários durante testes
+								"/autenticacao/**",
+								"/v3/api-docs/**",
+								"/swagger-ui/**",
+								"/swagger-ui.html"
 						).permitAll()
-						.requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
-						.anyRequest().authenticated()
+						.anyRequest().permitAll()
 				)
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

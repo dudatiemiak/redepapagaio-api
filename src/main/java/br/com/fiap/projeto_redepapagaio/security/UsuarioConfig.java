@@ -26,14 +26,14 @@ public class UsuarioConfig {
 					.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado na base dados"));
 
 			return User.builder().username(usuarioSistema.getUsername())
-								 .password(usuarioSistema.getPassword())
-								 .roles("USER")
-								 .build();
+					.password(usuarioSistema.getPassword())
+					.roles("USER")
+					.build();
 		};
 	}
-	
+
 	@Bean
-    PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
+	PasswordEncoder passwordEncoder() {
+		return NoOpPasswordEncoder.getInstance();
+	}
 }
