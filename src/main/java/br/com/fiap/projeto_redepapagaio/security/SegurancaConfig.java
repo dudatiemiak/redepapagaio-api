@@ -16,15 +16,16 @@ public class SegurancaConfig {
 
 	@Autowired
 	private JWTAuthFilter jwtAuthFilter;
-	
+
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
 		return config.getAuthenticationManager();
 	}
-	
-	@Bean
-    SecurityFilterChain filtrarRota(HttpSecurity http) throws Exception {
 
+	@Bean
+	SecurityFilterChain filtrarRota(HttpSecurity http) throws Exception {
+
+<<<<<<< HEAD
         http.csrf(csrf -> csrf.disable())
             .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
             .authorizeHttpRequests(auth -> auth
@@ -39,7 +40,22 @@ public class SegurancaConfig {
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+=======
+		http.csrf(csrf -> csrf.disable())
+				.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
+				.authorizeHttpRequests(auth -> auth
+						.requestMatchers(
+								"/autenticacao/**",
+								"/v3/api-docs/**",
+								"/swagger-ui/**",
+								"/swagger-ui.html"
+						).permitAll()
+						.anyRequest().permitAll()
+				)
+				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+>>>>>>> 9046d5b963791cb189a29d11189e75ffe910535e
 
-        return http.build();
-    }
+		return http.build();
+	}
 }

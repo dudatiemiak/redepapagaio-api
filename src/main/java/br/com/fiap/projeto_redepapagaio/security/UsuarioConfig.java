@@ -25,15 +25,22 @@ public class UsuarioConfig {
 			Usuario usuario = repU.findByNmEmail(nmEmail)
 					.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado na base dados"));
 
+<<<<<<< HEAD
 			return User.builder().username(usuario.getNmEmail())
 								 .password(usuario.getNmSenha())
 								 .roles("USER")
 								 .build();
+=======
+			return User.builder().username(usuarioSistema.getUsername())
+					.password(usuarioSistema.getPassword())
+					.roles("USER")
+					.build();
+>>>>>>> 9046d5b963791cb189a29d11189e75ffe910535e
 		};
 	}
-	
+
 	@Bean
-    PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
+	PasswordEncoder passwordEncoder() {
+		return NoOpPasswordEncoder.getInstance();
+	}
 }

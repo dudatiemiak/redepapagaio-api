@@ -1,0 +1,1 @@
+INSERT INTO t_ppg_usuario_sistema (username, password) VALUES ('admin', '1234');
