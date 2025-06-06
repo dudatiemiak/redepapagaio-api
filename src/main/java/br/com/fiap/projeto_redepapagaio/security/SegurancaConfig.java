@@ -32,7 +32,8 @@ public class SegurancaConfig {
                     "/autenticacao/**",       
                     "/v3/api-docs/**",        
                     "/swagger-ui/**",
-                    "/swagger-ui.html"
+                    "/swagger-ui.html",
+                    "/usuarios/**"
                 ).permitAll()
                 .anyRequest().authenticated()
             )
