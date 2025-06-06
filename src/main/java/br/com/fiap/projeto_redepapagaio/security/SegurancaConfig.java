@@ -27,19 +27,17 @@ public class SegurancaConfig {
 		http.csrf(csrf -> csrf.disable())
 				.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
 				.authorizeHttpRequests(auth -> auth
-						// Permitir acesso sem autenticação para algumas rotas
 						.requestMatchers(
-								"/autenticacao/**",       // Permite o acesso a autenticação
-								"/v3/api-docs/**",        // Permite acesso ao Swagger
+								"/autenticacao/**",       
+								"/v3/api-docs/**",        
 								"/swagger-ui/**",
 								"/swagger-ui.html",
-								"/usuarios/**"           // Permite acesso aos usuários sem autenticação
+								"/usuarios/**"           
 						).permitAll()
-						// Exigir autenticação para todas as outras rotas
-						.anyRequest().permitAll()
+						.anyRequest().authenticated()
+
 				)
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				// Adiciona o filtro JWT para as requisições
 				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
 		return http.build();

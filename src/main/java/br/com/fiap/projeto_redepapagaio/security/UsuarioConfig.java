@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import br.com.fiap.projeto_redepapagaio.model.Usuario;
@@ -19,13 +20,12 @@ public class UsuarioConfig {
 	private UsuarioRepository repU;
 
 	@Bean
-	public UserDetailsService gerarUsuario() {
+	UserDetailsService gerarUsuario() {
 
 		return nmEmail -> {
 			Usuario usuario = repU.findByNmEmail(nmEmail)
 					.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado na base de dados"));
 
-			// Corrigido para usar 'usuario' em vez de 'usuarioSistema'
 			return User.builder()
 					.username(usuario.getNmEmail())
 					.password(usuario.getNmSenha())
@@ -35,8 +35,7 @@ public class UsuarioConfig {
 	}
 
 	@Bean
-	public PasswordEncoder passwordEncoder() {
-		// Substituído NoOpPasswordEncoder por BCryptPasswordEncoder
-		return new BCryptPasswordEncoder();
-	}
+    PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
 }
