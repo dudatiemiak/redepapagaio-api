@@ -60,8 +60,8 @@ curl -X POST "http://localhost:8080/autenticacao/login?username=admin&password=1
 - `POST /autenticacao/login` — Autentica e retorna token JWT
 
 ### 👤 Usuário do Sistema
-- `GET /usuarios-sistema` — Lista todos os usuários do sistema
-- `POST /usuarios-sistema` — Cadastra um novo usuário
+- `GET /usuarios` — Lista todos os usuários do sistema
+- `POST /usuarios` — Cadastra um novo usuário
 
 ### 🌪 Ocorrências
 - `GET /ocorrencias` — Lista ocorrências registradas
