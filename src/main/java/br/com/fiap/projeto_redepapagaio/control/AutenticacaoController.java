@@ -1,6 +1,9 @@
 package br.com.fiap.projeto_redepapagaio.control;
 
+import br.com.fiap.projeto_redepapagaio.dto.UsuarioDTO;
+import br.com.fiap.projeto_redepapagaio.model.Usuario;
 import br.com.fiap.projeto_redepapagaio.security.JwtResponse;
+import br.com.fiap.projeto_redepapagaio.service.UsuarioCachingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +26,9 @@ public class AutenticacaoController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
+	@Autowired
+	private UsuarioCachingService usuarioCachingService;
+
 	@PostMapping("/login")
 	public ResponseEntity<?> gerarTokenValido(@RequestParam String username, @RequestParam String password) {
 		try {
@@ -30,11 +36,14 @@ public class AutenticacaoController {
 			var auth = new UsernamePasswordAuthenticationToken(username, password);
 			authenticationManager.authenticate(auth);  // Autentica o usuário
 
+			Usuario usuario = usuarioCachingService.findByEmail(username).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+
 			// Gera o JWT para o usuário autenticado
 			String jwt = jwtUtil.construirToken(username);
 
 			// Retorna o JWT para o cliente
-			return ResponseEntity.ok(new JwtResponse(jwt)); // Retorna apenas o token
+			return ResponseEntity.ok(new JwtResponse(jwt, usuario.getIdUsuario())); // Retorna apenas o token
 
 		} catch (Exception e) {
 			// Em caso de erro de autenticação, retorne uma mensagem adequada

@@ -28,6 +28,11 @@ public class UsuarioCachingService {
 	public Optional<Usuario> findById(Long idUsuario){
 		return repU.findById(idUsuario);
 	}
+
+	@Cacheable(value= "buscarPorEmail", key = "#email")
+	public Optional<Usuario> findByEmail(String email) {
+		return repU.findByNmEmail(email);
+	}
 	
 	@Cacheable(value = "buscarPaginasUsuarios", key = "#req")
 	public Page<Usuario> findAll(PageRequest req){
@@ -39,4 +44,5 @@ public class UsuarioCachingService {
 	public void limparCache() {
 		System.out.println("Limpando cache!");
 	}
+
 }
