@@ -81,6 +81,13 @@ curl -X POST "http://localhost:8080/autenticacao/login?username=admin&password=1
 
 ---
 
-## 👥 Equipe e Contribuições
+## 👨‍💻 Integrantes do Grupo
+
+| Nome                                      | RM       | Turma  |
+|-------------------------------------------|----------|--------|
+| Eduarda Tiemi Akamini Machado             | 554756   | 2TDSPH |
+| Felipe Pizzinato Bigatto                  | 555141   | 2TDSPH |
+| Gustavo de Oliveira Turci Sandrini        | 557505   | 2TDSPW |
+
 
 Desenvolvido por alunos da FIAP – Global Solution 2025-1.  
