@@ -45,39 +45,9 @@ mvn spring-boot:run
 Para acessar as rotas protegidas da API:
 
 1. Acesse `/autenticacao/login`
-2. Envie um `POST` com parâmetros `username` e `password`
+2. Envie um `POST` com parâmetros `username` e `password` -> que é o email do usuário e a senha
 3. Copie o token retornado
-4. Clique em **Authorize** no Swagger e informe: `Bearer <seu_token>`
-
-Exemplo:
-```bash
-curl -X POST "http://localhost:8080/autenticacao/login?username=admin&password=1234"
-```
-
-## 📡 Principais Endpoints da API
-
-### 🔐 Autenticação
-- `POST /autenticacao/login` — Autentica e retorna token JWT
-
-### 👤 Usuário do Sistema
-- `GET /usuarios` — Lista todos os usuários do sistema
-- `POST /usuarios` — Cadastra um novo usuário
-
-### 🌪 Ocorrências
-- `GET /ocorrencias` — Lista ocorrências registradas
-- `POST /ocorrencias` — Registra nova ocorrência
-
-### 🆘 Tipo de Ocorrência
-- `GET /tipos-ocorrencia` — Lista tipos de ocorrência (ex: ENCHENTE, INCÊNDIO)
-- `POST /tipos-ocorrencia` — Adiciona novo tipo
-
-### 🙋 Tipo de Ajuda
-- `GET /tipos-ajuda` — Lista tipos de ajuda (ex: ABRIGO, ALIMENTO)
-- `POST /tipos-ajuda` — Cadastra um novo tipo
-
-### 🤝 Ajuda Realizada
-- `GET /ajudas` — Lista todas as ajudas
-- `POST /ajudas` — Registra ajuda realizada por um usuário
+4. Clique em **Authorize** no Swagger e informe: `<seu_token>`
 
 ---
 
